@@ -1,29 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+
+import AppLoading from 'expo-app-loading';
+
+import { Archivo_400Regular, Archivo_700Bold, useFonts } from '@expo-google-fonts/archivo';
+import { Poppins_400Regular, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
+import AppStack from './src/routes/AppStack';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Hello NLW!</Text>
-      
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#333',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  let [fontsLoaded] = useFonts({
+    Archivo_400Regular,
+    Archivo_700Bold,
+    Poppins_400Regular,
+    Poppins_600SemiBold,
+  });
 
-  title: {
-    fontSize: 62,
-    color: '#fff',
-    fontWeight: 'bold'
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
+
+    return (
+      <>
+        <AppStack />
+        <StatusBar style="light" />
+      </>
+    );
+
   }
-
-});
+}
