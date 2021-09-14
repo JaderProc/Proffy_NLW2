@@ -1,10 +1,16 @@
 import React from "react";
-import { Image } from "react-native";
+import { Image, View } from "react-native";
+import PageHeader from "../../components/PageHeader";
 
-import Bum from '../../assets/images/Bum.gif'
+import styles from "./styles";
 
 function Favorites() {
-    return <Image source={Bum} />
+    return (
+        <View style={styles.container}>
+            <PageHeader title="Meus Proffys favoritos" />
+        </View>
+    )
 }
+
 
 export default Favorites;
